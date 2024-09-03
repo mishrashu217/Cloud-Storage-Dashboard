@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Storage Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #e0f7f8;
+        }
+
+        .sidebar {
+            background-color: #002e64;
+            color: #fff;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 10px 0;
+            display: block;
+        }
+
+        .sidebar a.active {
+            background-color: #014378;
+            border-radius: 5px;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .category-card {
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .category-card i {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .file-card {
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .file-card i {
+            margin-right: 10px;
+        }
+
+        .file-card .fa-share-alt {
+            color: #6c757d;
+            cursor: pointer;
+        }
+
+        .storage-bar {
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            height: 10px;
+            width: 100%;
+        }
+
+        .storage-bar .progress {
+            background-color: #007bff;
+            height: 10px;
+            border-radius: 5px;
+        }
+
+        .shared-folder {
+            background-color: #f7f8fc;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-lg-2 sidebar">
+                <div class="profile text-center mb-4">
+                    <img src="https://via.placeholder.com/50" alt="User Profile" class="rounded-circle">
+                    <p class="mt-2">My Cloud</p>
+                </div>
+                <a href="#" class="active"><i class="fas fa-cloud"></i> My Cloud</a>
+                <a href="#"><i class="fas fa-share-alt"></i> Shared Files</a>
+                <a href="#"><i class="fas fa-star"></i> Favorites</a>
+                <a href="#"><i class="fas fa-upload"></i> Upload Files</a>
+                <hr>
+                <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                <a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+            </div>
+
+            <div class="col-md-9 col-lg-10 main-content">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4>Categories</h4>
+                        <div class="row g-3">
+                            <div class="col-6 col-md-3">
+                                <div class="category-card bg-primary">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Pictures</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="category-card bg-info">
+                                    <i class="fas fa-file-alt"></i>
+                                    <p>Documents</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="category-card bg-danger">
+                                    <i class="fas fa-video"></i>
+                                    <p>Videos</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="category-card bg-dark">
+                                    <i class="fas fa-music"></i>
+                                    <p>Audio</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="mt-4">Files</h4>
+                        <div class="row g-3">
+                            <div class="col-6 col-md-3">
+                                <div class="category-card bg-secondary text-white">
+                                    <i class="fas fa-briefcase"></i>
+                                    <p>Work</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="category-card bg-success text-white">
+                                    <i class="fas fa-user"></i>
+                                    <p>Personal</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="category-card bg-pink text-white">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <p>School</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="category-card bg-primary text-white">
+                                    <i class="fas fa-archive"></i>
+                                    <p>Archive</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="mt-4">Recent Files</h4>
+                        <div class="file-card p-2 bg-light">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div><i class="fas fa-image"></i> IMG_100000 <span class="text-muted">PNG file</span></div>
+                                <div class="d-flex align-items-center">
+                                    <span class="text-muted me-2">5 MB</span>
+                                    <i class="fas fa-share-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="file-card p-2 bg-light">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div><i class="fas fa-file-video"></i> Startup Pitch <span class="text-muted">AVI file</span></div>
+                                <div class="d-flex align-items-center">
+                                    <span class="text-muted me-2">105 MB</span>
+                                    <i class="fas fa-share-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="file-card p-2 bg-light">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div><i class="fas fa-music"></i> Freestyle Beat <span class="text-muted">MP3 file</span></div>
+                                <div class="d-flex align-items-center">
+                                    <span class="text-muted me-2">21 MB</span>
+                                    <i class="fas fa-share-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="file-card p-2 bg-light">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div><i class="fas fa-file-alt"></i> Work Proposal <span class="text-muted">DOCx file</span></div>
+                                <div class="d-flex align-items-center">
+                                    <span class="text-muted me-2">500 kb</span>
+                                    <i class="fas fa-share-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="bg-white p-4 rounded">
+                            <h5>Add New Files</h5>
+                            <div class="text-center">
+                                <i class="fas fa-upload fa-3x"></i>
+                                <p class="mt-3">Click to upload</p>
+                            </div>
+                            <hr>
+                            <h5>Your Storage</h5>
+                            <div class="d-flex justify-content-between">
+                                <span>75 GB of 100 GB used</span>
+                                <span class="text-success">25% left</span>
+                            </div>
+                            <div class="storage-bar mt-2">
+                                <div class="progress" style="width: 75%;"></div>
+                            </div>
+
+                            <h5 class="mt-4">Your Shared Folders</h5>
+                            <div class="shared-folder">
+                                <i class="fas fa-folder"></i> Keynote Files
+                            </div>
+                            <div class="shared-folder">
+                                <i class="fas fa-folder"></i> Vacation Photos
+                            </div>
+                            <div class="shared-folder">
+                                <i class="fas fa-folder"></i> Project Report
+                            </div>
+                            <div class="mt-3">
+                                <a href="#" class="btn btn-primary btn-sm w-100">Add More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
